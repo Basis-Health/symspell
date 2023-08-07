@@ -8,10 +8,10 @@ use std::i64;
 use std::io::{BufRead, BufReader};
 use std::path::Path;
 
-use composition::Composition;
-use edit_distance::{DistanceAlgorithm, EditDistance};
-use string_strategy::StringStrategy;
-use suggestion::Suggestion;
+use crate::composition::Composition;
+use crate::edit_distance::{DistanceAlgorithm, EditDistance};
+use crate::string_strategy::StringStrategy;
+use crate::suggestion::Suggestion;
 
 #[derive(Eq, PartialEq, Debug)]
 pub enum Verbosity {
@@ -95,6 +95,15 @@ impl<T: StringStrategy> SymSpell<T> {
             self.load_dictionary_line(&line_str, term_index, count_index, separator);
         }
         true
+    }
+
+    pub fn load_dictionary_from_memory(&mut self, contents: Vec<(&str, i64)>) {
+        for (key, value) in contents {
+            self.create_dictionary_entry(
+                self.string_strategy.prepare(key),
+                value,
+            );
+        }
     }
 
     /// Load single dictionary entry from word/frequency count pair.
@@ -925,7 +934,7 @@ impl<T: StringStrategy> SymSpell<T> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use string_strategy::UnicodeStringStrategy;
+    use crate::string_strategy::UnicodeStringStrategy;
 
     #[test]
     fn test_lookup_compound_overflow() {

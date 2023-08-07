@@ -1,3 +1,4 @@
 target/
+._target
 
 examples/*_ignored.rs

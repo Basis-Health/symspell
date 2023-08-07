@@ -2,6 +2,14 @@
 
 # SymSpell
 
+Forked from https://github.com/reneklacan/symspell
+
+Changes from fork:
+- Updated dependencies
+- Added load_dictionary_from_memory 
+
+---
+
 Rust implementation of brilliant [SymSpell](https://github.com/wolfgarbe/SymSpell) originally written in C# by [@wolfgarbe](https://github.com/wolfgarbe).
 
 ## Usage
@@ -25,7 +33,7 @@ fn main() {
     let suggestions = symspell.lookup("roket", Verbosity::Top, 2);
     println!("{:?}", suggestions);
 
-    let sentence = "whereis th elove hehad dated forImuch of thepast who couqdn'tread in sixtgrade and ins pired him"
+    let sentence = "whereis th elove hehad dated forImuch of thepast who couqdn'tread in sixtgrade and ins pired him";
     let compound_suggestions = symspell.lookup_compound(sentence, 2);
     println!("{:?}", compound_suggestions);
 

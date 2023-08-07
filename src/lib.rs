@@ -44,10 +44,10 @@ mod symspell;
 mod wasm;
 
 #[cfg(not(target_arch = "wasm32"))]
-pub use string_strategy::AsciiStringStrategy;
-pub use string_strategy::{StringStrategy, UnicodeStringStrategy, UnicodeiStringStrategy};
-pub use suggestion::Suggestion;
-pub use symspell::{SymSpell, SymSpellBuilder, Verbosity};
+pub use crate::string_strategy::AsciiStringStrategy;
+pub use crate::string_strategy::{StringStrategy, UnicodeStringStrategy, UnicodeiStringStrategy};
+pub use crate::suggestion::Suggestion;
+pub use crate::symspell::{SymSpell, SymSpellBuilder, Verbosity};
 
 #[cfg(target_arch = "wasm32")]
 pub use wasm::JSSymSpell;
