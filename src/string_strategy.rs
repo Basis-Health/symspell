@@ -12,16 +12,9 @@ pub trait StringStrategy: Clone + Default {
 }
 
 #[cfg(not(target_arch = "wasm32"))]
-#[derive(Clone)]
+#[derive(Clone, Default)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct AsciiStringStrategy {}
-
-#[cfg(not(target_arch = "wasm32"))]
-impl Default for AsciiStringStrategy {
-    fn default() -> AsciiStringStrategy {
-        AsciiStringStrategy {}
-    }
-}
 
 #[cfg(not(target_arch = "wasm32"))]
 impl StringStrategy for AsciiStringStrategy {
@@ -63,15 +56,9 @@ impl StringStrategy for AsciiStringStrategy {
 // backward compatibility on typo
 pub type UnicodeiStringStrategy = UnicodeStringStrategy;
 
-#[derive(Clone)]
+#[derive(Clone, Default)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct UnicodeStringStrategy {}
-
-impl Default for UnicodeStringStrategy {
-    fn default() -> UnicodeStringStrategy {
-        UnicodeStringStrategy {}
-    }
-}
 
 impl StringStrategy for UnicodeStringStrategy {
     fn new() -> Self {
