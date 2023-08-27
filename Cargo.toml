@@ -1,6 +1,6 @@
 [package]
 name = "symspell"
-version = "0.4.3"
+version = "0.5.0"
 edition = "2021"
 license = "MIT"
 authors = ["Rene Klacan <rene.klacan@gmail.com>", "Alexander Procelewski <alex@basishealth.io>"]
@@ -11,6 +11,8 @@ repository = "https://github.com/Basis-Health/symspell"
 exclude = [
     "data/*",
 ]
+
+publish = ["crabby"]
 
 [lib]
 crate-type = ["cdylib", "rlib"]
